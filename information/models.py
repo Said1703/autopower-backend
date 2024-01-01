@@ -19,7 +19,7 @@ class Information(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.name} {self.last_name}"
+        return f"{self.nombre} {self.apellido}"
 
     class Meta:
         db_table = "information"
