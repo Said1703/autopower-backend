@@ -21,6 +21,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path(api_version, include("user.urls")),
     path(api_version, include("buyer.urls")),
+    path(api_version, include("buy.urls")),
     path(api_version, include("subscription.urls")),
     path(api_version, include("information.urls")),
     path("swagger/", schema_view.with_ui("swagger",

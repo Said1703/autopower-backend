@@ -5,13 +5,13 @@ import requests
 from decouple import config
 
 
-class PaymentViewSet(ModelViewSet):
+class BuyViewSet(ModelViewSet):
     queryset = Buy.objects.all()
     serializer_class = BuySerializer
 
     def create(self, request):
         data = {
-            'description': 'Primera venta',
+            'description': 'Gracias por adquirir Autopower',
             'installments': request.data.get('installments'),
             'issuer_id': request.data.get('issuer_id'),
             'payer': {
@@ -23,7 +23,7 @@ class PaymentViewSet(ModelViewSet):
         }
 
         response = requests.post(
-            'https://api.mercadopago.com/v1/payments',
+            'https://api.mercadopago.com/v1/buy',
             json=data,
             headers={
                 'Authorization': f'Bearer {config("MERCADOPAGO_ACCESS_TOKEN")}',
@@ -31,8 +31,4 @@ class PaymentViewSet(ModelViewSet):
             }
         )
 
-        print("-----------")
-        print(response.text)
-        print("-----------")
-        print(response.json())
         return super().create(request)
