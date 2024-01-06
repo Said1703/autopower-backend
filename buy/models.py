@@ -12,7 +12,7 @@ class Buy(models.Model):
         (4, 'RECHAZADO')
     ]
 
-    buyer = models.ForeignKey(Buyer, on_delete=models.CASCADE)
+    buyer = models.ForeignKey(Buyer, on_delete=models.CASCADE, null=True)
     payment_date = models.DateField()
     payer_email = models.EmailField(max_length=250, null=True)
     payer_document_type = models.CharField(max_length=20, blank=True)
