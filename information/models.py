@@ -14,7 +14,7 @@ class Information(models.Model):
     numero_doc = models.CharField(max_length=50, unique=True, blank=True)
     pais = models.CharField(max_length=50, blank=True)
     direccion = models.CharField(max_length=200, blank=True)
-    telefono = models.FloatField(unique=True, blank=True)
+    telefono = models.CharField(max_length=10, unique=True, blank=True)
     tipo_vehiculo = models.CharField(max_length=200, blank=True)
     placa_vehiculo = models.CharField(max_length=10, unique=True, blank=True)
     is_active = models.BooleanField(default=True)
