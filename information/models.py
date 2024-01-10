@@ -12,7 +12,7 @@ class Information(models.Model):
     tipo_documento = models.CharField(
         max_length=50, choices=TIPO_DOCUMENTO_CHOICES, blank=True)
     numero_doc = models.CharField(max_length=50, unique=True, blank=True)
-    pais = models.CharField(max_length=50, blank=True)
+    pais = models.CharField(max_length=20, blank=True)
     direccion = models.CharField(max_length=200, blank=True)
     telefono = models.CharField(max_length=10, unique=True, blank=True)
     tipo_vehiculo = models.CharField(max_length=200, blank=True)
@@ -26,3 +26,20 @@ class Information(models.Model):
 
     class Meta:
         db_table = "information"
+
+
+class Paises(models.Model):
+    peru = models.CharField(max_length=20)
+    venezuela = models.CharField(max_length=20)
+    mexico = models.CharField(max_length=20)
+    ecuador = models.CharField(max_length=20)
+    argentina = models.CharField(max_length=20)
+    uruguay = models.CharField(max_length=20)
+    chile = models.CharField(max_length=20)
+    bolivia = models.CharField(max_length=20)
+    paraguay = models.CharField(max_length=20)
+    brasil = models.CharField(max_length=20)
+    colombia = models.CharField(max_length=20)
+
+    class Meta:
+        db_table = "paises"
