@@ -2,6 +2,26 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+class Paises(models.Model):
+    PAIS_CHOICES = [
+        ('PE', 'Perú'),
+        ('VE', 'Venezuela'),
+        ('MX', 'México'),
+        ('EC', 'Ecuador'),
+        ('AR', 'Argentina'),
+        ('UY', 'Uruguay'),
+        ('CL', 'Chile'),
+        ('BO', 'Bolivia'),
+        ('PY', 'Paraguay'),
+        ('BR', 'Brasil'),
+        ('CO', 'Colombia'),
+    ]
+    pais = models.CharField(max_length=2, choices=PAIS_CHOICES, null=True)
+
+    class Meta:
+        db_table = "paises"
+
+
 class Information(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     TIPO_DOCUMENTO_CHOICES = [
@@ -12,7 +32,8 @@ class Information(models.Model):
     tipo_documento = models.CharField(
         max_length=50, choices=TIPO_DOCUMENTO_CHOICES, blank=True)
     numero_doc = models.CharField(max_length=50, unique=True, blank=True)
-    pais = models.CharField(max_length=20, blank=True)
+    pais = models.CharField(
+        max_length=2, choices=Paises.PAIS_CHOICES, default='PE', null=True,)
     direccion = models.CharField(max_length=200, blank=True)
     telefono = models.CharField(max_length=10, unique=True, blank=True)
     tipo_vehiculo = models.CharField(max_length=200, blank=True)
@@ -26,20 +47,3 @@ class Information(models.Model):
 
     class Meta:
         db_table = "information"
-
-
-class Paises(models.Model):
-    peru = models.CharField(max_length=20)
-    venezuela = models.CharField(max_length=20)
-    mexico = models.CharField(max_length=20)
-    ecuador = models.CharField(max_length=20)
-    argentina = models.CharField(max_length=20)
-    uruguay = models.CharField(max_length=20)
-    chile = models.CharField(max_length=20)
-    bolivia = models.CharField(max_length=20)
-    paraguay = models.CharField(max_length=20)
-    brasil = models.CharField(max_length=20)
-    colombia = models.CharField(max_length=20)
-
-    class Meta:
-        db_table = "paises"
