@@ -6,9 +6,13 @@ from django.contrib.auth.hashers import make_password
 class UserSerializer(ModelSerializer):
 
     def create(self, validated_data):
-        validated_data["password"] = make_password(validated_data["password"])
-        return super().create(validated_data)
+        last_name = validated_data.pop("last_name", None)
+        email = validated_data.pop("email", None)
+
+        user = User.objects.create(
+            **validated_data, last_name=last_name, email=email)
+        return user
 
     class Meta:
         model = User
-        fields = "__all__"
+        fields = ['username', 'last_name', 'email']
