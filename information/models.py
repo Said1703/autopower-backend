@@ -19,7 +19,25 @@ class Paises(models.Model):
     pais = models.CharField(max_length=2, choices=PAIS_CHOICES, null=True)
 
     class Meta:
-        db_table = "paises"
+        db_table = "country"
+
+
+class Autos(models.Model):
+    AUTOS_CHOICES = [
+        ('SEDAN', 'Sedán'),
+        ('HATCHBACK', 'Hatchback'),
+        ('COUPE', 'Coupé'),
+        ('STATION_WAGON', 'Station wagon'),
+        ('SUV', 'Suv'),
+        ('CROSSOVER', 'Crossover'),
+        ('CONVERTIBLE', 'Convertible'),
+        ('4X4', '4x4'),
+        ('OTROS', 'Otros'),
+    ]
+    autos = models.CharField(max_length=30, choices=AUTOS_CHOICES, null=True)
+
+    class Meta:
+        db_table = "autos"
 
 
 class Information(models.Model):
@@ -34,9 +52,9 @@ class Information(models.Model):
     numero_doc = models.CharField(max_length=50, unique=True, blank=True)
     pais = models.CharField(
         max_length=2, choices=Paises.PAIS_CHOICES, default='PE', null=True,)
-    direccion = models.CharField(max_length=200, blank=True)
     telefono = models.CharField(max_length=10, unique=True, blank=True)
-    tipo_vehiculo = models.CharField(max_length=200, blank=True)
+    tipo_vehiculo = models.CharField(
+        max_length=30, choices=Autos.AUTOS_CHOICES, default='SEDAN', null=True,)
     placa_vehiculo = models.CharField(max_length=10, unique=True, blank=True)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
