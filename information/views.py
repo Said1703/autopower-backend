@@ -7,7 +7,7 @@ from rest_framework.permissions import IsAuthenticated
 class InformationViewSet(ModelViewSet):
     queryset = Information.objects.all()
     serializer_class = InformationSerializer
-    permission_classes = [IsAuthenticated]
+    pagintation_class = [IsAuthenticated]
 
 
 class PaisesViewSet(ModelViewSet):
