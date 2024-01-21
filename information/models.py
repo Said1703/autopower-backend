@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from subscription.models import Subscription
 
 
 class Paises(models.Model):
@@ -41,6 +42,8 @@ class Autos(models.Model):
 
 
 class Information(models.Model):
+    subscription = models.OneToOneField(
+        Subscription, on_delete=models.CASCADE, null=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     TIPO_DOCUMENTO_CHOICES = [
         ('DNI', 'Documento Nacional de Identidad'),
