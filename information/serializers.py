@@ -2,7 +2,7 @@ from rest_framework.exceptions import ValidationError
 from rest_framework.serializers import ModelSerializer
 from .models import Information, Paises, Autos
 from user.serializers import UserSerializer
-from .serializers import SubscriptionSerializer
+from subscription.serializers import SubscriptionSerializer
 # from django.contrib.auth import authenticate
 
 
