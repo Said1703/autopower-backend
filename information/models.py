@@ -64,7 +64,7 @@ class Information(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.placa_vehiculo} {self.tipo_documento} {self.numero_doc}"
+        return f"{self.user} {self.subscription} {self.placa_vehiculo} {self.tipo_documento} {self.numero_doc}"
 
     class Meta:
         db_table = "information"
