@@ -44,7 +44,9 @@ class Autos(models.Model):
 class Information(models.Model):
     subscription = models.OneToOneField(
         Subscription, on_delete=models.CASCADE, null=True)
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    nombre = models.CharField(max_length=50, blank=True)
+    apellidos = models.CharField(max_length=250, blank=True)
+    email = models.EmailField(blank=True)
     TIPO_DOCUMENTO_CHOICES = [
         ('DNI', 'Documento Nacional de Identidad'),
         ('PAS', 'Pasaporte'),
