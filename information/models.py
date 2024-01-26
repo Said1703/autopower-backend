@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User
 from subscription.models import Subscription
 
 
@@ -42,8 +41,6 @@ class Autos(models.Model):
 
 
 class Information(models.Model):
-    subscription = models.OneToOneField(
-        Subscription, on_delete=models.CASCADE, null=True)
     nombre = models.CharField(max_length=50, blank=True)
     apellidos = models.CharField(max_length=250, blank=True)
     email = models.EmailField(blank=True)
@@ -62,6 +59,8 @@ class Information(models.Model):
         max_length=30, choices=Autos.AUTOS_CHOICES, default='SEDAN', null=True,)
     placa_vehiculo = models.CharField(max_length=10, unique=True, blank=True)
     is_active = models.BooleanField(default=True)
+    subscription = models.ForeignKey(
+        Subscription, on_delete=models.CASCADE, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

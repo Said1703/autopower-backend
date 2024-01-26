@@ -6,9 +6,6 @@ from subscription.serializers import SubscriptionSerializer
 
 
 class InformationSerializer(ModelSerializer):
-
-    subscription = SubscriptionSerializer()
-
     class Meta:
         model = Information
         fields = "__all__"
@@ -42,3 +39,12 @@ class AutosSerializer(ModelSerializer):
     class Meta:
         model = Autos
         fields = "__all__"
+
+
+class InformationSubcriptionSerializer(ModelSerializer):
+
+    subscription = SubscriptionSerializer(read_only=True)
+
+    class Meta:
+        model = Information
+        fields = ("nombre", "apellidos", "placa_vehiculo", "numero_doc", "email","subscription")
