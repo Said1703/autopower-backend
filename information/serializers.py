@@ -2,6 +2,7 @@ from rest_framework.exceptions import ValidationError
 from rest_framework.serializers import ModelSerializer
 from .models import Information, Paises, Autos
 from subscription.serializers import SubscriptionSerializer
+# from buyer.serializers import BuyerSerializer
 # from django.contrib.auth import authenticate
 
 
@@ -47,4 +48,13 @@ class InformationSubcriptionSerializer(ModelSerializer):
 
     class Meta:
         model = Information
-        fields = ("nombre", "apellidos", "placa_vehiculo", "numero_doc", "email","subscription")
+        fields = ("nombre", "apellidos", "placa_vehiculo",
+                  "numero_doc", "email", "subscription")
+
+
+# class InformationBuyerSerializer(ModelSerializer):
+#     buyer = BuyerSerializer(read_only=True)
+
+#     class Meta:
+#         Model = Information
+#         Fields = ("buyer")
