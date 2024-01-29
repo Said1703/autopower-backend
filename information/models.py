@@ -1,5 +1,6 @@
 from django.db import models
 from subscription.models import Subscription
+# from buyer.models import Buyer
 
 
 class Paises(models.Model):
@@ -61,11 +62,13 @@ class Information(models.Model):
     is_active = models.BooleanField(default=True)
     subscription = models.ForeignKey(
         Subscription, on_delete=models.CASCADE, null=True)
+    # buyer = models.ForeignKey(
+    #     Buyer, on_delete=models.CASCADE, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.user} {self.subscription} {self.placa_vehiculo} {self.tipo_documento} {self.numero_doc}"
+        return f" {self.subscription} {self.placa_vehiculo} {self.tipo_documento} {self.numero_doc}"
 
     class Meta:
         db_table = "information"

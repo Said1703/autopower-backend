@@ -85,8 +85,12 @@ WSGI_APPLICATION = 'autopower.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'railway',
+        'USER': 'root',
+        'PASSWORD': 'HC12dbdE-DEcDeFA5GDCh54Hb4FACFEH',
+        'HOST': 'viaduct.proxy.rlwy.net',
+        'PORT': '37758'
     }
 }
 
